@@ -18,4 +18,8 @@ public class ObjType  extends DefaultObjectClass {
     @Fields(fields = {@IndexField(type = FieldType.TEXT, fieldName = "objField1"),
         @IndexField(type = FieldType.TEXT, fieldName = "objField2")})
     private String objField;
+     @IndexField(type = FieldType.TEXT, fieldName = "obj2Field3")
+    @Fields(fields = {@IndexField(type = FieldType.TEXT, fieldName = "obj2Field1"),
+        @IndexField(type = FieldType.TEXT, fieldName = "obj2Field2")})
+    private String obj2Field;
 }

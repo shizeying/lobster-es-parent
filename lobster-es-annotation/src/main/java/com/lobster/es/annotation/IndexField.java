@@ -188,6 +188,13 @@ public @interface IndexField {
      */
     boolean eager_global_ordinals() default false;
     
+    
+    /**
+     * only for fieldType is
+     * @see  FieldType#JOIN
+     */
+    JoinTypeRelations[] relations()  default {};
+    
    
   
     

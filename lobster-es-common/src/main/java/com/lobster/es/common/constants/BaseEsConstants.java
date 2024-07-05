@@ -14,4 +14,8 @@ public  interface BaseEsConstants {
      * 默认副本数
      */
     int DEFAULT_REPLICAS = 1;
+	/**
+	 * fields
+	 */
+	String FIELDS = "fields";
 }
