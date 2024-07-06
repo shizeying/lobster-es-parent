@@ -113,7 +113,7 @@ public @interface IndexField {
      * 
      * @see FieldType#DENSE_VECTOR
      */
-    int dimension() default 0;
+    int dims() default 0;
 
     /**
      * if field type is

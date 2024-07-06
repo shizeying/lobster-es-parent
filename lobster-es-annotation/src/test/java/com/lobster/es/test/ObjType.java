@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 public class ObjType  extends DefaultObjectClass {
     @IndexField(type = FieldType.TEXT, fieldName = "objField3")
-    @Fields(fields = {@IndexField(type = FieldType.TEXT, fieldName = "objField1"),
+    @Fields(fields = {@IndexField(type = FieldType.TEXT, fieldName = "objField1",search_analyzer = "ik_smart"),
         @IndexField(type = FieldType.TEXT, fieldName = "objField2")})
     private String objField;
      @IndexField(type = FieldType.TEXT, fieldName = "obj2Field3")

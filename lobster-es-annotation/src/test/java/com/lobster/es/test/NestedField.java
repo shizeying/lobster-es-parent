@@ -12,8 +12,8 @@ import lombok.Data;
  */
 @Data
 public class NestedField extends DefaultNestedClass {
-	@IndexField(type = FieldType.TEXT, fieldName = "NestedField3")
-    @Fields(fields = {@IndexField(type = FieldType.TEXT, fieldName = "NestedField1"),
-        @IndexField(type = FieldType.TEXT, fieldName = "NestedField2")})
+	@IndexField(type = FieldType.KEYWORD, fieldName = "nestedFiel4",ignore_above = 512)
+    @Fields(fields = {@IndexField(type = FieldType.TEXT, fieldName = "nestedFiel41",search_analyzer = "ik_smart"),
+        @IndexField(type = FieldType.TEXT, fieldName = "nestedFiel42")})
     private String nestedField;
 }

@@ -14,32 +14,34 @@ public class TestIndex {
 	@IndexId(type = IdType.DEFAULT)
 	private String id;
 	//
-	//@IndexField(fieldName = "binary_field", type = FieldType.BINARY)
-	//private byte[] binaryField;
-	//
-	//@IndexField(fieldName = "completion_field", type = FieldType.COMPLETION)
-	//private String completionField;
-	//
-	//@IndexField(fieldName = "date_field", type = FieldType.DATE, format = "yyyy-MM-dd")
-	//private String dateField;
-	//
-	//@IndexField(fieldName = "date_nanos_field", type = FieldType.DATE_NANOS, format = "strict_date_optional_time_nanos")
-	//private String dateNanosField;
-	//
-	//@IndexField(fieldName = "dense_vector_field", type = FieldType.DENSE_VECTOR, dimension = 128, index = true, similarity = Similarity.L2_NORM)
+	@IndexField(fieldName = "binary_field", type = FieldType.BINARY)
+	private byte[] binaryField;
+
+	@IndexField(fieldName = "completion_field", type = FieldType.COMPLETION)
+	private String completionField;
+
+	@IndexField(fieldName = "date_field", type = FieldType.DATE, format = "yyyy-MM-dd")
+	private String dateField;
+
+	@IndexField(fieldName = "date_nanos_field", type = FieldType.DATE_NANOS, format = "strict_date_optional_time_nanos")
+	private String dateNanosField;
+
+	//@IndexField(fieldName = "dense_vector_field", type = FieldType.DENSE_VECTOR, dims = 128, index = true, similarity =
+	//		Similarity.L2_NORM)
 	//private float[] denseVectorField;
-	//
+
 	//@IndexField(fieldName = "flattened_field", type = FieldType.FLATTENED)
 	//private Object flattenedField;
-	//
-	//@IndexField(fieldName = "geo_point_field", type = FieldType.GEO_POINT)
-	//private String geoPointField;
-	//
-	//@IndexField(fieldName = "geo_shape_field", type = FieldType.GEO_SHAPE)
-	//private String geoShapeField;
-	//
-	//@IndexField(fieldName = "histogram_field", type = FieldType.HISTOGRAM)
+	//	@IndexField(fieldName = "histogram_field", type = FieldType.HISTOGRAM)
 	//private Object histogramField;
+
+	@IndexField(fieldName = "geo_point_field", type = FieldType.GEO_POINT)
+	private String geoPointField;
+
+	@IndexField(fieldName = "geo_shape_field", type = FieldType.GEO_SHAPE)
+	private String geoShapeField;
+
+
 	
 	@IndexField(fieldName = "join_field", type = FieldType.JOIN, joinType = JoinTypeObj.class, relations = {
 			@JoinTypeRelations(parent = "parent_field", child = {"child_field", "child_field3"}),
@@ -47,23 +49,23 @@ public class TestIndex {
 	})
 	private JoinTypeObj joinField;
 	
-	//@IndexField(fieldName = "nested_field", type = FieldType.NESTED, nested = NestedField.class)
-	//private NestedField nestedField;
+	@IndexField(fieldName = "nested_field", type = FieldType.NESTED, nested = NestedField.class)
+	private NestedField nestedField;
 	//
-	//@IndexField(fieldName = "byte_field", type = FieldType.BYTE)
-	//private byte byteField;
-	//
-	//@IndexField(fieldName = "half_float_field", type = FieldType.HALF_FLOAT)
-	//private float halfFloatField;
-	//
-	//@IndexField(fieldName = "scaled_float_field", type = FieldType.SCALED_FLOAT)
-	//private double scaledFloatField;
-	//
-	//@IndexField(fieldName = "unsigned_long_field", type = FieldType.UNSIGNED_LONG)
-	//private long unsignedLongField;
-	//
-	//@IndexField(fieldName = "object_field", type = FieldType.OBJECT, object = ObjType.class)
-	//private List<ObjType> objectField;
+	@IndexField(fieldName = "byte_field", type = FieldType.BYTE)
+	private byte byteField;
+
+	@IndexField(fieldName = "half_float_field", type = FieldType.HALF_FLOAT)
+	private float halfFloatField;
+
+	@IndexField(fieldName = "scaled_float_field", type = FieldType.SCALED_FLOAT)
+	private double scaledFloatField;
+
+	@IndexField(fieldName = "unsigned_long_field", type = FieldType.UNSIGNED_LONG)
+	private long unsignedLongField;
+
+	@IndexField(fieldName = "object_field", type = FieldType.OBJECT, object = ObjType.class)
+	private List<ObjType> objectField;
 	//
 	//@IndexField(fieldName = "percolator_field", type = FieldType.PERCOLATOR)
 	//private String percolatorField;

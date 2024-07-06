@@ -12,6 +12,7 @@ import com.lobster.es.annotation.enums.*;
 import com.lobster.es.common.util.Asserts;
 import lombok.SneakyThrows;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.checkerframework.checker.units.qual.A;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -93,7 +94,7 @@ public class MappingConverter {
 					.searchAnalyzer(indexField.search_analyzer().isEmpty() ? null : indexField.search_analyzer())
 					.format(indexField.format().isEmpty() ? null : indexField.format())
 					.ignoreAbove(indexField.ignore_above() == 0 ? null : indexField.ignore_above())
-					.dims(indexField.dimension() == 0 ? null : indexField.dimension())
+					.dims(indexField.dims() == 0 ? null : indexField.dims())
 					.index(indexField.index() ? true : null)
 					.similarity(indexField.similarity() == Similarity.NONE ? null : indexField.similarity().name().toLowerCase())
 					.norms(indexField.norms() ? true : null)
@@ -178,7 +179,7 @@ public class MappingConverter {
 				.searchAnalyzer(indexField.search_analyzer().isEmpty() ? null : indexField.search_analyzer())
 				.format(indexField.format().isEmpty() ? null : indexField.format())
 				.ignoreAbove(indexField.ignore_above() == 0 ? null : indexField.ignore_above())
-				.dims(indexField.dimension() == 0 ? null : indexField.dimension())
+				.dims(indexField.dims() == 0 ? null : indexField.dims() )
 				.index(indexField.index() ? true : null)
 				.similarity(indexField.similarity() == Similarity.NONE ? null : indexField.similarity().name().toLowerCase())
 				.norms(indexField.norms() ? true : null)
@@ -226,6 +227,9 @@ public class MappingConverter {
 			Asserts.check(
 					!(indexField.similarity() == Similarity.BM25 || indexField.similarity() == Similarity.BOOLEAN),
 					"similarity not support BM25 or BOOLEAN");
+		}
+		if (type== FieldType.DENSE_VECTOR) {
+			Asserts.check(indexField.dims()<=2048, "vector dims must be less than or equal to 2048");
 		}
 	}
 	
