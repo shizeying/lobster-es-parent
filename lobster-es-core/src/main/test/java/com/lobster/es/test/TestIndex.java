@@ -45,14 +45,14 @@ public class TestIndex {
 
 
 	
-	@IndexField(fieldName = "join_field", type = FieldType.JOIN, joinType = JoinTypeObj.class, relations = {
+	@IndexField(fieldName = "join_field", type = FieldType.JOIN, joinType = com.lobster.es.test.JoinTypeObj.class, relations = {
 			@JoinTypeRelations(parent = "parent_field", child = {"child_field", "child_field3"}),
 			@JoinTypeRelations(parent = "parent_field2", child = "child_field2")
 	})
 	private DefaultJoinClass joinField;
 	
-	@IndexField(fieldName = "nested_field", type = FieldType.NESTED, nested = NestedField.class)
-	private NestedField nestedField;
+	@IndexField(fieldName = "nested_field", type = FieldType.NESTED, nested = com.lobster.es.test.NestedField.class)
+	private com.lobster.es.test.NestedField nestedField;
 	//
 	@IndexField(fieldName = "byte_field", type = FieldType.BYTE)
 	private byte byteField;                                                        
@@ -66,8 +66,8 @@ public class TestIndex {
 	@IndexField(fieldName = "unsigned_long_field", type = FieldType.UNSIGNED_LONG)
 	private long unsignedLongField;
 
-	@IndexField(fieldName = "object_field", type = FieldType.OBJECT, object = ObjType.class)
-	private List<ObjType> objectField;
+	@IndexField(fieldName = "object_field", type = FieldType.OBJECT, object = com.lobster.es.test.ObjType.class)
+	private List<com.lobster.es.test.ObjType> objectField;
 	//
 	@IndexField(fieldName = "percolator_field", type = FieldType.PERCOLATOR)
 	private String percolatorField;
