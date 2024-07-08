@@ -1,4 +1,4 @@
-package com.lobster.es.test;
+package com.lobster.es.core.mapping;
 
 import lombok.Builder;
 import lombok.Data;

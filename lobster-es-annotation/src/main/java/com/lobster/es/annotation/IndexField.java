@@ -1,7 +1,7 @@
 package com.lobster.es.annotation;
 
 import com.lobster.es.annotation.enums.*;
-import com.lobster.es.annotation.params.DefaultJoinType;
+import com.lobster.es.annotation.params.DefaultJoinClass;
 import com.lobster.es.annotation.params.DefaultNestedClass;
 import com.lobster.es.annotation.params.DefaultObjectClass;
 
@@ -50,7 +50,7 @@ public @interface IndexField {
      * 
      * @see FieldType#AGGREGATE_METRIC_DOUBLE
      */
-    Metrics default_metric() default Metrics.VALUE_COUNT;
+    Metrics default_metric() default Metrics.NONE;
 
     /**
      * This field only supports
@@ -71,7 +71,7 @@ public @interface IndexField {
      * Should the field be stored on disk in a column-stride fashion, so that it can later be used for sorting,
      * aggregations, or scripting? Accepts true or false (default).
      */
-    boolean doc_values() default false;
+    DocValuesOption doc_values() default DocValuesOption.NONE;
 
     /**
      * Whether the field value should be stored and retrievable separately from the _source field. Accepts true or false
@@ -79,19 +79,19 @@ public @interface IndexField {
      * 
      * @return boolean
      */
-    boolean store() default false;
+    DocValuesOption store() default DocValuesOption.NONE;
 
     /**
      *
      * Should the field be quickly searchable? Accepts true (default) and false. Fields that only have doc_values
      * enabled can still be queried using term or range-based queries, albeit slower.
      */
-    boolean index() default false;
+    DocValuesOption index() default DocValuesOption.NONE;
 
     /**
      * ignore_malformed
      */
-    boolean ignore_malformed() default false;
+    DocValuesOption ignore_malformed() default DocValuesOption.NONE;
 
     /**
      * null_value
@@ -113,7 +113,7 @@ public @interface IndexField {
      * 
      * @see FieldType#DENSE_VECTOR
      */
-    int dims() default 0;
+    int dims() default -1;
 
     /**
      * if field type is
@@ -142,14 +142,14 @@ public @interface IndexField {
      * @return Class
      *
      */
-    Class<? extends  DefaultJoinType> joinType() default DefaultJoinType.class;
+    Class<? extends DefaultJoinClass> joinType() default DefaultJoinClass.class;
     
     /**
      * @see FieldType#KEYWORD
      * @return boolean
      * Whether field-length should be taken into account when scoring queries. Accepts true or false (default).
      */
-    boolean norms()default false;
+    DocValuesOption norms()default DocValuesOption.NONE;
     
     /**
      * only for
@@ -169,12 +169,12 @@ public @interface IndexField {
      * @see FieldType#RANK_FEATURE
      * @see FieldType#RANK_FEATURES
      */
-    boolean positive_score_impact() default false;
+    DocValuesOption positive_score_impact() default DocValuesOption.NONE;
     
     /**
      * @return boolean
      */
-    boolean fielddata() default false;
+    DocValuesOption fielddata() default DocValuesOption.NONE;
     
     /**
      * @see  FieldType#TEXT
@@ -186,7 +186,7 @@ public @interface IndexField {
     /**
      * @return boolean
      */
-    boolean eager_global_ordinals() default false;
+    DocValuesOption eager_global_ordinals() default DocValuesOption.NONE;
     
     
     /**
@@ -194,6 +194,11 @@ public @interface IndexField {
      * @see  FieldType#JOIN
      */
     JoinTypeRelations[] relations()  default {};
+    /**
+     *  only for fieldType is
+     *  @see  FieldType#SCALED_FLOAT
+     */
+     int scalingFactor() default -1;
     
    
   

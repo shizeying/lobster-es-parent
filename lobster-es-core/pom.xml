@@ -7,21 +7,23 @@
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <groupId>com.lobster.es.annotation</groupId>
-    <artifactId>lobster-es-annotation</artifactId>
-    <name>小龙虾 es 注解</name>
+    <groupId>com.lobster.es.core</groupId>
+    <artifactId>lobster-es-core</artifactId>
+    <name>小龙虾 es 通用</name>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
+
         <dependency>
             <groupId>com.lobster.es.common</groupId>
             <artifactId>lobster-es-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
+            <groupId>com.lobster.es.annotation</groupId>
+            <artifactId>lobster-es-annotation</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
             <artifactId>elasticsearch-rest-client</artifactId>

@@ -24,6 +24,7 @@
     <modules>
         <module>lobster-es-annotation</module>
         <module>lobster-es-common</module>
+        <module>lobster-es-core</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -37,6 +38,12 @@
             <dependency>
                 <groupId>com.lobster.es.common</groupId>
                 <artifactId>lobster-es-common</artifactId>
+                <version>${revision}${sha1}${changelist}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lobster.es.annotation</groupId>
+                <artifactId>lobster-es-annotation</artifactId>
                 <version>${revision}${sha1}${changelist}</version>
             </dependency>
 

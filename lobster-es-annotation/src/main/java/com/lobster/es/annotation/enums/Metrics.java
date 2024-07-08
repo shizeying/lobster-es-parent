@@ -24,4 +24,9 @@ public enum Metrics {
 	 * value_count
 	 */
 	VALUE_COUNT,
+	/**
+	 * None
+	 */
+	NONE
+	
 }

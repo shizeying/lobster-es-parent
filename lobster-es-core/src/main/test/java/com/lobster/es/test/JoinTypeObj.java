@@ -1,6 +1,6 @@
 package com.lobster.es.test;
 
-import com.lobster.es.annotation.params.DefaultJoinType;
+import com.lobster.es.annotation.params.DefaultJoinClass;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,6 +10,6 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class JoinTypeObj extends DefaultJoinType {
+public class JoinTypeObj extends DefaultJoinClass {
 
 }
