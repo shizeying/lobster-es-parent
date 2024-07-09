@@ -2,8 +2,8 @@ package com.lobster.es.test;
 
 
 import com.lobster.es.annotation.*;
-import com.lobster.es.annotation.enums.*;
-import com.lobster.es.annotation.params.DefaultJoinClass;
+import com.lobster.es.common.enums.*;
+import com.lobster.es.common.params.DefaultJoinClass;
 import lombok.Data;
 
 import java.util.List;

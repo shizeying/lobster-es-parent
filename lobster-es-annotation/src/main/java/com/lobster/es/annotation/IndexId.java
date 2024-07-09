@@ -1,6 +1,7 @@
 package com.lobster.es.annotation;
 
-import com.lobster.es.annotation.enums.IdType;
+
+import com.lobster.es.common.enums.IdType;
 
 import java.lang.annotation.*;
 

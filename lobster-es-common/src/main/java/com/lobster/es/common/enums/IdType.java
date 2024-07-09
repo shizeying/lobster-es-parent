@@ -1,4 +1,4 @@
-package com.lobster.es.annotation.enums;
+package com.lobster.es.common.enums;
 
 /**
  * id 生成策略

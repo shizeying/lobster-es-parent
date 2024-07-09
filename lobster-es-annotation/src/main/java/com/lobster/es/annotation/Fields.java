@@ -1,9 +1,11 @@
 package com.lobster.es.annotation;
 
+import com.lobster.es.common.enums.FieldType;
+
 import java.lang.annotation.*;
 
 /**
- * @see com.lobster.es.annotation.enums.FieldType#TEXT
+ * @see FieldType#TEXT
  * @author zeyingshi
  * @date 05 7月 2024 01:17
  */

@@ -3,9 +3,9 @@ package com.lobster.es.test;
 
 import com.lobster.es.annotation.Fields;
 import com.lobster.es.annotation.IndexField;
-import com.lobster.es.annotation.enums.FieldType;
 
-import com.lobster.es.annotation.params.DefaultObjectClass;
+import com.lobster.es.common.enums.FieldType;
+import com.lobster.es.common.params.DefaultObjectClass;
 import lombok.Data;
 
 /**

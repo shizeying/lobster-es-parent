@@ -1,7 +1,8 @@
 
 package com.lobster.es.annotation;
 
-import com.lobster.es.annotation.enums.IndexOptionsType;
+
+import com.lobster.es.common.enums.IndexOptionsType;
 
 import java.lang.annotation.*;
 

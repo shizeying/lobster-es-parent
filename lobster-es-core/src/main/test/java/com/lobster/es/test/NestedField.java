@@ -2,8 +2,8 @@ package com.lobster.es.test;
 
 import com.lobster.es.annotation.Fields;
 import com.lobster.es.annotation.IndexField;
-import com.lobster.es.annotation.enums.FieldType;
-import com.lobster.es.annotation.params.DefaultNestedClass;
+import com.lobster.es.common.enums.FieldType;
+import com.lobster.es.common.params.DefaultNestedClass;
 import lombok.Data;
 
 /**

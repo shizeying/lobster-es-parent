@@ -1,4 +1,4 @@
-package com.lobster.es.annotation.params;
+package com.lobster.es.common.params;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

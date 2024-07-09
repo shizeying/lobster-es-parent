@@ -1,9 +1,11 @@
 package com.lobster.es.annotation;
 
-import com.lobster.es.annotation.enums.*;
-import com.lobster.es.annotation.params.DefaultJoinClass;
-import com.lobster.es.annotation.params.DefaultNestedClass;
-import com.lobster.es.annotation.params.DefaultObjectClass;
+
+
+import com.lobster.es.common.enums.*;
+import com.lobster.es.common.params.DefaultJoinClass;
+import com.lobster.es.common.params.DefaultNestedClass;
+import com.lobster.es.common.params.DefaultObjectClass;
 
 import java.lang.annotation.*;
 
