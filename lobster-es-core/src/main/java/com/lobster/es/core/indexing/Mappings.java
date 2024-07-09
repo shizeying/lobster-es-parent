@@ -1,26 +1,29 @@
-package com.lobster.es.core.mapping;
+package com.lobster.es.core.indexing;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONWriter;
 import com.alibaba.fastjson2.filter.PropertyFilter;
+import com.google.common.collect.Maps;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.StringJoiner;
 
 /**
  * @author w7410
  * @date 09 7月 2024 01:08
  */
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Mappings {
 	
 	private Mapping mappings;
+	private Map<String, Object> settings;
 	
 	@Override
 	public String toString() {
@@ -49,5 +52,14 @@ public class Mappings {
 				JSONWriter.Feature.WriteNulls);
 		
 		
+	}
+	
+	public Mappings putSetting(Map<String, Object> settings) {
+		if (this.settings == null) {
+			this.settings = Maps.newHashMap(settings);
+		}
+		
+		this.settings.putAll(settings);
+		return this;
 	}
 }

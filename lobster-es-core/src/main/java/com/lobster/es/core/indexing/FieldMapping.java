@@ -1,4 +1,4 @@
-package com.lobster.es.core.mapping;
+package com.lobster.es.core.indexing;
 
 /**
  * @author zeyingshi

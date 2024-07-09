@@ -42,4 +42,11 @@ public @interface IndexName {
      * @return 别名
      */
     String aliasName() default "";
+    /**
+     * refresh_interval
+     */
+    String refreshInterval() default BaseEsConstants.DEFAULT_REFRESH_INTERVAL;
+    
+    
+    
 }

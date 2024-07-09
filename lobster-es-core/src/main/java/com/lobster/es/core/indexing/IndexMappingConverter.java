@@ -1,28 +1,27 @@
-package com.lobster.es.core.mapping;
+package com.lobster.es.core.indexing;
 
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONWriter;
-import com.alibaba.fastjson2.filter.PropertyFilter;
 import com.google.common.collect.Maps;
-import com.lobster.es.annotation.Fields;
-import com.lobster.es.annotation.IndexField;
-import com.lobster.es.annotation.IndexId;
-import com.lobster.es.annotation.JoinTypeRelations;
+import com.lobster.es.annotation.*;
 import com.lobster.es.annotation.enums.*;
 import com.lobster.es.annotation.params.DefaultJoinClass;
+import com.lobster.es.common.constants.BaseEsConstants;
 import com.lobster.es.common.tuple.Tuple2;
 import com.lobster.es.common.util.Asserts;
-import lombok.SneakyThrows;
+import org.apache.commons.lang3.StringUtils;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MappingConverter {
+import static com.lobster.es.common.constants.BaseEsConstants.*;
+
+/**
+ * @author w7410
+ */
+public class IndexMappingConverter {
 	
-	@SneakyThrows
-	public static <T> Mappings createMapping(Class<T> clazz) {
+	public static <T> Mappings createIndexMapping(Class<T> clazz) {
 		Map<String, FieldMapping> properties = Maps.newHashMap();
 		List<Field> allFields = getAllFields(clazz);
 		
@@ -35,9 +34,13 @@ public class MappingConverter {
 		//判断是否存在ALIAS
 		checkAlias(properties);
 		
-		return new Mappings(Mapping.builder()
-				.properties(properties)
-				.build());
+		
+		return Mappings.builder()
+				.settings(convertSettings(clazz))
+				.mappings(Mapping.builder()
+						.properties(properties)
+						
+						.build()).build();
 	}
 	
 	private static List<Field> getAllFields(Class<?> type) {
@@ -395,6 +398,27 @@ public class MappingConverter {
 			default:
 				return null;
 		}
+	}
+	
+	
+	public static <T> Map<String, Object> convertSettings(Class<T> clazz) {
+		Map<String, Object> settings = Maps.newHashMap();
+		if (clazz.isAnnotationPresent(IndexName.class)) {
+			IndexName indexName = clazz.getAnnotation(IndexName.class);
+			if (!indexName.refreshInterval().equals(BaseEsConstants.DEFAULT_REFRESH_INTERVAL)) {
+				settings.put(INDEX_REFRESH_INTERVAL_KEY, indexName.refreshInterval());
+			}
+			if (StringUtils.isNotBlank(indexName.aliasName())) {
+				settings.put(BaseEsConstants.INDEX_ALIAS_KEY, indexName.aliasName());
+			}
+			if (indexName.shardsNum() > 0) {
+				settings.put(BaseEsConstants.INDEX_SHARDS_KEY, indexName.shardsNum());
+			}
+			if (indexName.replicasNum() > 0) {
+				settings.put(BaseEsConstants.INDEX_REPLICAS_KEY, indexName.replicasNum());
+			}
+		}
+		return settings;
 	}
 	
 	
