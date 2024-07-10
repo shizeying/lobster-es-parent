@@ -2,9 +2,9 @@ package com.lobster.es.core.indexing;
 
 import com.google.common.collect.Maps;
 import com.lobster.es.annotation.*;
-import com.lobster.es.annotation.enums.*;
-import com.lobster.es.annotation.params.DefaultJoinClass;
 import com.lobster.es.common.constants.BaseEsConstants;
+import com.lobster.es.common.enums.*;
+import com.lobster.es.common.params.DefaultJoinClass;
 import com.lobster.es.common.tuple.Tuple2;
 import com.lobster.es.common.util.Asserts;
 import org.apache.commons.lang3.StringUtils;
