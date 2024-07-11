@@ -1,6 +1,7 @@
-package com.lobster.es.test;
+package com.lobster.es.core.index;
 
 import com.lobster.es.common.params.DefaultJoinClass;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

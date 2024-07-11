@@ -20,6 +20,7 @@
         <commons-collections4.version>4.5.0-M1</commons-collections4.version>
         <lombok.version>1.18.34</lombok.version>
         <guava.version>31.1-jre</guava.version>
+        <junit-jupiter-api.version>5.11.0-M2</junit-jupiter-api.version>
     </properties>
     <modules>
         <module>lobster-es-annotation</module>
@@ -81,6 +82,13 @@
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>elasticsearch-rest-client-sniffer</artifactId>
                 <version>${elasticsearch-rest-client.version}</version>
+            </dependency>
+            <!--            增加 junit 测试-->
+            <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit-jupiter-api.version}</version>
             </dependency>
 
 

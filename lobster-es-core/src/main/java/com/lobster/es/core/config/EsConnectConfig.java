@@ -1,5 +1,7 @@
 package com.lobster.es.core.config;
 
+import java.util.Arrays;
+
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.sniff.SniffOnFailureListener;
@@ -59,14 +61,13 @@ public class EsConnectConfig {
     }
 
     public RestClient commonConnect() {
-        return null;
+        RestClient restClient = RestClient.builder(getHost()).build();
+        return restClient;
     }
 
     public RestClient snifferConnect() {
         SniffOnFailureListener sniffOnFailureListener = new SniffOnFailureListener();
-        RestClient restClient = RestClient.builder(new HttpHost("localhost", 9200))
-
-            .setFailureListener(sniffOnFailureListener).build();
+        RestClient restClient = RestClient.builder(getHost()).setFailureListener(sniffOnFailureListener).build();
         SnifferBuilder builder = Sniffer.builder(restClient);
         if (this.settingConfigProperties.getSniffAfterFailureDelayMillis() > 0) {
             builder.setSniffAfterFailureDelayMillis(this.settingConfigProperties.getSniffAfterFailureDelayMillis());
@@ -74,6 +75,12 @@ public class EsConnectConfig {
         Sniffer sniffer = builder.build();
         sniffOnFailureListener.setSniffer(sniffer);
         return restClient;
+    }
+
+    private HttpHost[] getHost() {
+        String address = this.settingConfigProperties.getAddress();
+        return Arrays.stream(address.split(",")).map(i -> new HttpHost(i.split(":")[0],
+            Integer.parseInt(i.split(":")[1]), this.settingConfigProperties.getSchema())).toArray(HttpHost[]::new);
     }
 
 }
