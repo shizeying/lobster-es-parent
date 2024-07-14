@@ -7,25 +7,27 @@
         <version>${revision}${sha1}${changelist}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <groupId>com.lobster.es.common</groupId>
-    <artifactId>lobster-es-common</artifactId>
-    <name>小龙虾 es 通用</name>
+    <groupId>com.lobster.es.entity</groupId>
+    <artifactId>lobster-es-entity</artifactId>
+    <name>小龙虾 es entity</name>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
+            <groupId>com.lobster.es.annotation</groupId>
+            <artifactId>lobster-es-annotation</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>co.elastic.clients</groupId>
+            <artifactId>elasticsearch-java</artifactId>
+            <version>8.6.0</version>
+        </dependency>
+
     </dependencies>
 
 

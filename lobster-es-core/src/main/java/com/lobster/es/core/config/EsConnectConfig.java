@@ -8,6 +8,7 @@ import org.elasticsearch.client.sniff.SniffOnFailureListener;
 import org.elasticsearch.client.sniff.Sniffer;
 import org.elasticsearch.client.sniff.SnifferBuilder;
 
+import com.lobster.es.common.enums.SchemaEnum;
 import com.lobster.es.common.util.Asserts;
 
 import lombok.NoArgsConstructor;
@@ -61,7 +62,9 @@ public class EsConnectConfig {
     }
 
     public RestClient commonConnect() {
-        RestClient restClient = RestClient.builder(getHost()).build();
+        RestClient restClient = RestClient.builder(getHost())
+                .setCompressionEnabled(true)
+                .build();
         return restClient;
     }
 
@@ -79,8 +82,23 @@ public class EsConnectConfig {
 
     private HttpHost[] getHost() {
         String address = this.settingConfigProperties.getAddress();
-        return Arrays.stream(address.split(",")).map(i -> new HttpHost(i.split(":")[0],
-            Integer.parseInt(i.split(":")[1]), this.settingConfigProperties.getSchema())).toArray(HttpHost[]::new);
+        for (String host : address.split(",")) {
+
+        }
+
+        return Arrays.stream(address.split(",")).map(i -> {
+            if (i.split(":").length != 2
+                && SchemaEnum.HTTP.name().toLowerCase().equals(this.settingConfigProperties.getSchema())) {
+                return new HttpHost(i, 80, this.settingConfigProperties.getSchema());
+            }
+            if (i.split(":").length != 2
+                && SchemaEnum.HTTPS.name().toLowerCase().equals(this.settingConfigProperties.getSchema())) {
+                return new HttpHost(i, 443, this.settingConfigProperties.getSchema());
+            }
+            return new HttpHost(i.split(":")[0], Integer.parseInt(i.split(":")[1]),
+                this.settingConfigProperties.getSchema());
+
+        }).toArray(HttpHost[]::new);
     }
 
 }

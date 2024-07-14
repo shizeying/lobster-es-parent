@@ -20,6 +20,10 @@
             <artifactId>lobster-es-common</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.lobster.es.entity</groupId>
+            <artifactId>lobster-es-entity</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.lobster.es.annotation</groupId>
             <artifactId>lobster-es-annotation</artifactId>
         </dependency>
@@ -36,6 +40,21 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
         </dependency>
     </dependencies>
 

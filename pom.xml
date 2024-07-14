@@ -21,11 +21,13 @@
         <lombok.version>1.18.34</lombok.version>
         <guava.version>31.1-jre</guava.version>
         <junit-jupiter-api.version>5.11.0-M2</junit-jupiter-api.version>
+        <log4j-slf4j2-impl.version>2.23.1</log4j-slf4j2-impl.version>
     </properties>
     <modules>
         <module>lobster-es-annotation</module>
         <module>lobster-es-common</module>
         <module>lobster-es-core</module>
+        <module>lobster-es-entity</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -36,9 +38,23 @@
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j-slf4j2-impl.version}</version>
+                <type>pom</type>
+            </dependency>
+
+
             <dependency>
                 <groupId>com.lobster.es.common</groupId>
                 <artifactId>lobster-es-common</artifactId>
+                <version>${revision}${sha1}${changelist}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lobster.es.entity</groupId>
+                <artifactId>lobster-es-entity</artifactId>
                 <version>${revision}${sha1}${changelist}</version>
             </dependency>
 
@@ -90,11 +106,30 @@
                 <artifactId>junit-jupiter-api</artifactId>
                 <version>${junit-jupiter-api.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j2-impl -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j2-impl</artifactId>
+                <version>${log4j-slf4j2-impl.version}</version>
+            </dependency>
 
+            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j-slf4j2-impl.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j-slf4j2-impl.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
     <dependencies>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
